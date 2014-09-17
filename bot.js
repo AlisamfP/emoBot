@@ -7,15 +7,15 @@ var bot = new irc.Client('irc.freenode.net', 'gifbot',{channels: ['#testingbots'
 bot.addListener('message', function (from, to, text){
    var message = text.split(/[, ]+/);
     if (_.contains(message, 'emoji')){
-        var tag = message.shift();
-        console.log(tag)
-        if(_.isEmpty(tag)){
+        message.shift();
+        if(_.isEmpty(message)){
+            console.log('empty array');
             bot.say(to, emoji.select().string)
         }
         else{
-            tag = tag.join(' ');
-            if(_.contains(emoji.getTags(), tag)){
-                bot.say(to, emoji.select(tag).string);
+            message = message.join(' ');
+            if(_.contains(emoji.getTags(), message)){
+                bot.say(to, emoji.select(message).string);
             }
             else{
                 bot.say(to, 'tag not supported');
