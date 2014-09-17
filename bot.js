@@ -2,7 +2,7 @@ var irc = require('irc');
 var emoji = require('emo/lib/emotes');
 var _ = require('lodash');
 
-var bot = new irc.Client('irc.freenode.net', 'gifbot',{channels: ['#testingbots']});
+var bot = new irc.Client('irc.freenode.net', 'emobot',{channels: ['#phxtech']});
 
 bot.addListener('message', function (from, to, text){
    var message = text.split(/[, ]+/);
@@ -18,7 +18,7 @@ bot.addListener('message', function (from, to, text){
                 bot.say(to, emoji.select(message).string);
             }
             else{
-                bot.say(to, 'tag not supported');
+                bot.say(to, 'NOPE');
             }
         }
     }
