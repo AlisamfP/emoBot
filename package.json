@@ -1,0 +1,14 @@
+{
+  "name": "ircBot",
+  "version": "0.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "emo": "^0.3.0"
+  }
+}
