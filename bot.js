@@ -1,15 +1,26 @@
 var irc = require('irc');
 var emoji = require('emo/lib/emotes');
+var _ = require('lodash');
 
 var bot = new irc.Client('irc.freenode.net', 'gifbot',{channels: ['#testingbots']});
 
 bot.addListener('message', function (from, to, text){
-    var message = text.split(/[, ]+/);
-    if(message.indexOf('emoji') != undefined){
-        index = message.indexOf('emoji');
-        var tag = message[index+2] != undefined ? message[2] : '';
-        bot.say(to, emoji.select(tag).string);
-        console.log(emoji.getTags())
+   var message = text.split(/[, ]+/);
+    if (_.contains(message, 'emoji')){
+        var tag = message.shift();
+        console.log(tag)
+        if(_.isEmpty(tag)){
+            bot.say(to, emoji.select().string)
+        }
+        else{
+            tag = tag.join(' ');
+            if(_.contains(emoji.getTags(), tag)){
+                bot.say(to, emoji.select(tag).string);
+            }
+            else{
+                bot.say(to, 'tag not supported');
+            }
+        }
     }
 });
 
