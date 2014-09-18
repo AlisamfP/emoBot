@@ -2,7 +2,7 @@ var irc = require('irc');
 var _   = require('lodash');
 var request = require('request');
 
-var testRoom = '#testingbots';
+var testRoom = '#phxtech';
 var publicBetakey = '&limit=1&api_key=dc6zaTOxFJmzC';
 
 var bot = new irc.Client('irc.freenode.net', 'gif_bot', {channels: [testRoom]});
