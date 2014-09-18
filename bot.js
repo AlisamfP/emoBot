@@ -33,7 +33,7 @@ bot.addListener('message', function (from, to, text){
 bot.addListener('error', function (error){ console.log(error); })
 
 bot.join('#testingbots', function(){
-    bot.say('#testingbots', 'Type EMOBOT [emotion] for an emoticon');
+    bot.say('#testingbots', 'Type EMOBOT [tag] for an emoticon. <EMOBOT tags> will send a pm with all available tags.');
 })
 
 
