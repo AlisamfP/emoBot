@@ -30,7 +30,7 @@ function findGif(search){
         if(!err && res.statusCode == 200 && _.isEmpty(JSON.parse(body).data)!=true){
             body = JSON.parse(body);
             console.log(body);
-            bot.say(testRoom, body.data[0].bitly_gif_url);
+            bot.say(testRoom, body.data[0].images.original.url);
         }
         else{
             bot.say(testRoom, 'NOPE!');
