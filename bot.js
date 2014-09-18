@@ -2,9 +2,10 @@ var irc = require('irc');
 var emoji = require('emo/lib/emotes');
 var _ = require('lodash');
 
-var bot = new irc.Client('irc.freenode.net', 'emobot',{channels: ['#phxtech']});
+var bot = new irc.Client('irc.freenode.net', 'emobot',{channels: ['#testingbots']});
 
 bot.addListener('message', function (from, to, text){
+    text = text.toLowerCase();
    var message = text.split(/[, ]+/).slice(text.split(/[, ]+/).indexOf('emobot'));
     if (_.contains(message, 'emobot')){
         message.shift();
@@ -31,7 +32,9 @@ bot.addListener('message', function (from, to, text){
 
 bot.addListener('error', function (error){ console.log(error); })
 
-bot.join('#phxtech');
+bot.join('#testingbots', function(){
+    bot.say('#testingbots', 'Type EMOBOT [emotion] for an emoticon');
+})
 
 
 
