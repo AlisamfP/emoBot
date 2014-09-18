@@ -2,11 +2,11 @@ var irc = require('irc');
 var emoji = require('emo/lib/emotes');
 var _ = require('lodash');
 
-var bot = new irc.Client('irc.freenode.net', 'emobot',{channels: ['#testingbots']});
+var bot = new irc.Client('irc.freenode.net', 'emobot',{channels: ['#phxtech']});
 
 bot.addListener('message', function (from, to, text){
-   var message = text.split(/[, ]+/).slice(text.split(/[, ]+/).indexOf('emotibot'));
-    if (_.contains(message, 'emotibot')){
+   var message = text.split(/[, ]+/).slice(text.split(/[, ]+/).indexOf('emobot'));
+    if (_.contains(message, 'emobot')){
         message.shift();
         if(_.isEmpty(message)){
             console.log('empty array');
@@ -31,7 +31,7 @@ bot.addListener('message', function (from, to, text){
 
 bot.addListener('error', function (error){ console.log(error); })
 
-bot.join('#testingbots');
+bot.join('#phxtech');
 
 
 
